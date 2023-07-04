@@ -1,5 +1,5 @@
 #https://www.youtube.com/watch?v=m4nEnsavl6w
-#DOESNT WORK UGHHHHHHHH
+
 
 from words import wordlist
 import random
@@ -20,7 +20,7 @@ def play(word):
     while not guessed and tries > 0:
         guess = input("Please guess a letter or word: ").upper()
         if len(guess) == 1 and guess.isalpha():
-            if guess in guessedLetters:
+            if guess in guessedLetters: 
                 print("You've already guessed the letter", guess)
             elif guess not in word:
                 print(guess, "is not in the word.")
@@ -30,7 +30,7 @@ def play(word):
                 print("Good job,", guess, "is in the word.")
                 guessedLetters.append(guess)
                 wordAsList = list(wordCompletion)
-                indices = [i for i, letter in enumerate(word) is letter == guess]
+                indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
                     wordAsList[index] = guess
                 wordCompletion = "".join(wordAsList)

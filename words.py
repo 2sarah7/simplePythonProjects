@@ -1,6 +1,6 @@
 wordlist = [
     "hello",
-    "bacon,"
+    "bacon",
     "egg",
     "tut",
     "askew",
