@@ -5,6 +5,7 @@ while finished == False:
     if "ADD" in aor.upper():
         item = input("What would you like to add? ")
         shoppingList.append(item.upper())
+        print(item, "was added to the shopping list! ")
     elif "REMOVE" in aor.upper():
         take = input("What would you like to remove? ")
         if take.upper() in shoppingList:
