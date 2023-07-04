@@ -1,6 +1,7 @@
 
 import tkinter as tk
 
+
 passpin = "1234"
 
 tryleft = 3
@@ -14,7 +15,8 @@ def getpass(entered, pin, tries):
             
             tries -= 1
 
-            row.config(text=f"Password is incorrect, {tries} tries left")
+            row.config(text=f"Password is incorrect")
+            #, {tries} tries left
     else:
         row.config(text=f"Too many failed atempts. Please try again later. ")
 
