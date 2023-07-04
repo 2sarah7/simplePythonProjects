@@ -4,7 +4,7 @@ import tkinter as tk
 
 passpin = "1234"
 
-tryleft = 3
+tryleft = 4
 
 def getpass(entered, pin, tries):
     entered = userInput.get()
