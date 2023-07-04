@@ -10,9 +10,14 @@ while finished == False:
         take = input("What would you like to remove? ")
         if take.upper() in shoppingList:
             shoppingList.remove(str(take.upper()))
+            print(take, "was successfully removed!")
         else:
             print(take, "is not in your shopping list. ")
     elif "VIEW" in aor.upper():
-        print(shoppingList)
+        i = 1
+        print("Shopping list: ")
+        for listItem in shoppingList:
+            print(str(i) + ":" + listItem)
+            i += 1
     elif "FINISH" in aor.upper() or "DONE" in aor.upper():
         finished = True
