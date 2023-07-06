@@ -10,8 +10,11 @@ window.geometry("500x500")
 label = tk.Label(text="Calc1:")
 label.grid(row=0, column=0)
 
+global txtInBox
+txtInBox = "Hello"
 #create where you can manually type in math expressions
 txtBox = tk.Entry(window, width=5)
+txtBox.insert("end", ".")
 txtBox.grid(row=1)
 
 dispEq = tk.Button(text="=")
@@ -26,9 +29,6 @@ label2.grid(row=2, column=0)
 
 bExpress = tk.Label(text=".")
 bExpress.grid(row=2, column=1)
-
-bAns = tk.Label(text="Ans")
-bAns.grid(row=2, column=3)
 
 #creates all buttons 
 b1 = tk.Button(window, text="1")
@@ -52,8 +52,14 @@ b6.grid(row=4, column=2)
 b7 = tk.Button(window, text="7")
 b7.grid(row=5, column=0)
 
+bClr = tk.Button(window, text="clr")
+bClr.grid(row=6, column=0)
+
 b8 = tk.Button(window, text="8")
 b8.grid(row=5, column=1)
+
+b0 = tk.Button(window, text="0")
+b0.grid(row=6, column=1)
 
 b9 = tk.Button(window, text="9")
 b9.grid(row=5, column=2)
@@ -67,37 +73,99 @@ bMinus.grid(row=4, column=3)
 bDiv = tk.Button(window, text="/")
 bDiv.grid(row=5, column=3)
 
+bMult = tk.Button(window, text="*")
+bMult.grid(row=2, column=3)
+
 buttonEqual = tk.Button(window, text="=")
 buttonEqual.grid(row=6, column=3)
 
+def addone():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("1"))
+b1.config(command=addone)
+
+def addtwo():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("2"))
+b2.config(command=addtwo)
+
+def addthree():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("3"))
+b3.config(command=addthree)
+
+def addfour():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("4"))
+b4.config(command=addfour)
+
+def addfive():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("5"))
+b5.config(command=addfive)
+
+def addsix():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("6"))
+b6.config(command=addsix)
+
+def addseven():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("7"))
+b7.config(command=addseven)
+
+def addeight():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("8"))
+b8.config(command=addeight)
+
+def addnine():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("9"))
+b9.config(command=addnine)
+
+def addzero():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("0"))
+b0.config(command=addzero)
+
+def plus():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("+"))
+bPlus.config(command=plus)
+
+def sub():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("-"))
+bMinus.config(command=sub)
+
+def div():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("/"))
+bDiv.config(command=div)
+
+def multiply():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("*"))
+bMult.config(command=multiply)
+
+def clr():
+    current = txtBox.get()
+    txtBox.delete(0, tk.END)
+bClr.config(command=clr)
+
+
 #solves from text box
 def calculateByTyping():
-  global i 
-  i = 2
   value = txtBox.get()
   result = eval(value)
   txtAnswer.config(text=result)
 
-#might need to rearange this to put it at the top - each button is supposed to add a digit or symbol to mathstr so when the equal button is hit the fully typed expression can be calculated
-mathstr = " "
-def addone():
-    mathstr = mathstr + "1"
-b1.config(command=addone())
-
-def addtwo():
-    mathstr = mathstr + "2"
-b2.config(command=addtwo)
 
 
-def calculateByButtons():
-    value1 = eval(mathstr)
-    bAns.config(text=value1)
 
-#how to make it so the = can do both?
+buttonEqual.config(command=calculateByTyping)
 
-dispEq.config(command=calculateByTyping)
-
-buttonEqual.config(command=calculateByButtons)
 
 
 
