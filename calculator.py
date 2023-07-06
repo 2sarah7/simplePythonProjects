@@ -7,28 +7,18 @@ window.title("Calculator")
 window.geometry("500x500")
 
 #create the label at the top
-label = tk.Label(text="Calc1:")
+label = tk.Label(text="Calculator:")
 label.grid(row=0, column=0)
 
-global txtInBox
-txtInBox = "Hello"
 #create where you can manually type in math expressions
-txtBox = tk.Entry(window, width=5)
-txtBox.insert("end", ".")
+txtBox = tk.Entry(window, width=6)
+txtBox.insert("end", " ")
 txtBox.grid(row=1)
 
-dispEq = tk.Button(text="=")
-dispEq.grid(row=1, column=1)
 
 #this shows answer from both manual typing
 txtAnswer = tk.Label(text="Ans")
 txtAnswer.grid(row=1, column=3)
-
-label2 = tk.Label(text="Calc2:")
-label2.grid(row=2, column=0)
-
-bExpress = tk.Label(text=".")
-bExpress.grid(row=2, column=1)
 
 #creates all buttons 
 b1 = tk.Button(window, text="1")
@@ -75,6 +65,9 @@ bDiv.grid(row=5, column=3)
 
 bMult = tk.Button(window, text="*")
 bMult.grid(row=2, column=3)
+
+bDecimal = tk.Button(window, text=".")
+bDecimal.grid(row=6, column=2)
 
 buttonEqual = tk.Button(window, text="=")
 buttonEqual.grid(row=6, column=3)
@@ -148,6 +141,11 @@ def multiply():
     current = txtBox.get()
     txtBox.insert(tk.END, str("*"))
 bMult.config(command=multiply)
+
+def deci():
+    current = txtBox.get()
+    txtBox.insert(tk.END, str("."))
+bDecimal.config(command=deci)
 
 def clr():
     current = txtBox.get()
