@@ -1,6 +1,5 @@
 import tkinter as tk
 
-global mathstr
 #create the window
 window = tk.Tk()
 window.title("Calculator")
@@ -10,13 +9,12 @@ window.geometry("500x500")
 label = tk.Label(text="Calculator:")
 label.grid(row=0, column=0)
 
-#create where you can manually type in math expressions
+#create where math expressions will be typed
 txtBox = tk.Entry(window, width=6)
 txtBox.insert("end", " ")
 txtBox.grid(row=1)
 
-
-#this shows answer from both manual typing
+#this shows answer after evaluated
 txtAnswer = tk.Label(text="Ans")
 txtAnswer.grid(row=1, column=3)
 
@@ -72,6 +70,7 @@ bDecimal.grid(row=6, column=2)
 buttonEqual = tk.Button(window, text="=")
 buttonEqual.grid(row=6, column=3)
 
+#the funcs that make the buttons work
 def addone():
     current = txtBox.get()
     txtBox.insert(tk.END, str("1"))
@@ -152,37 +151,14 @@ def clr():
     txtBox.delete(0, tk.END)
 bClr.config(command=clr)
 
-
 #solves from text box
 def calculateByTyping():
   value = txtBox.get()
   result = eval(value)
   txtAnswer.config(text=result)
 
-
-
-
+#When = pressed evaluates whats in txt box
 buttonEqual.config(command=calculateByTyping)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 window.mainloop()
 
