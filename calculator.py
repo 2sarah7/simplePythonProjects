@@ -1,21 +1,36 @@
 import tkinter as tk
 
+global mathstr
+#create the window
 window = tk.Tk()
 window.title("Calculator")
 window.geometry("500x500")
 
-label = tk.Label(text="Calculator")
+#create the label at the top
+label = tk.Label(text="Calc1:")
 label.grid(row=0, column=0)
 
+#create where you can manually type in math expressions
 txtBox = tk.Entry(window, width=5)
 txtBox.grid(row=1)
 
-txtMath = tk.Label(text="Eq")
-txtMath.grid(row=1, column=1)
+dispEq = tk.Button(text="=")
+dispEq.grid(row=1, column=1)
 
+#this shows answer from both manual typing
 txtAnswer = tk.Label(text="Ans")
 txtAnswer.grid(row=1, column=3)
 
+label2 = tk.Label(text="Calc2:")
+label2.grid(row=2, column=0)
+
+bExpress = tk.Label(text=".")
+bExpress.grid(row=2, column=1)
+
+bAns = tk.Label(text="Ans")
+bAns.grid(row=2, column=3)
+
+#creates all buttons 
 b1 = tk.Button(window, text="1")
 b1.grid(row=3, column=0)
 
@@ -55,15 +70,34 @@ bDiv.grid(row=5, column=3)
 buttonEqual = tk.Button(window, text="=")
 buttonEqual.grid(row=6, column=3)
 
-
+#solves from text box
 def calculateByTyping():
+  global i 
+  i = 2
   value = txtBox.get()
   result = eval(value)
   txtAnswer.config(text=result)
 
+#might need to rearange this to put it at the top - each button is supposed to add a digit or symbol to mathstr so when the equal button is hit the fully typed expression can be calculated
+mathstr = " "
+def addone():
+    mathstr = mathstr + "1"
+b1.config(command=addone())
 
-buttonEqual.config(command=calculateByTyping)
+def addtwo():
+    mathstr = mathstr + "2"
+b2.config(command=addtwo)
 
+
+def calculateByButtons():
+    value1 = eval(mathstr)
+    bAns.config(text=value1)
+
+#how to make it so the = can do both?
+
+dispEq.config(command=calculateByTyping)
+
+buttonEqual.config(command=calculateByButtons)
 
 
 
