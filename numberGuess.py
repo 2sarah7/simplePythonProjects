@@ -2,7 +2,7 @@
 import tkinter as tk
 import random
 
-#picks a random number
+#picks a random number 
 x = 100
 num_wins = 0
 num = random.randint(1,x)
@@ -16,6 +16,7 @@ def get_num(wins,number):
         user_input_int = int(user_input.get())
     except:
         win_label.config(text="NOT A NUMBER")
+        user_input.delete(0, "end")
         return None
 
     #will check if user input is equal to the random number
@@ -25,15 +26,15 @@ def get_num(wins,number):
         global num
         num = random.randint(1,x)
         print(num)
-        user_input.delete(1)
+        user_input.delete(1, "end")
         num_of_wins.config(text=f'Number of wins: {num_wins}')
         win_label.config(text="win")
     elif user_input_int <= number:
         win_label.config(text="Number is too small")
-        user_input.delete(0)
+        user_input.delete(0, "end")
     elif user_input_int >= number:
         win_label.config(text="Number is too big")
-        user_input.delete(0)
+        user_input.delete(0, "end")
 #    else:
 #        win_label.config(text="Lose")      
 #        user_input.delete(0)
